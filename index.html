@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id ="wrapper">
+        <div id ="head">
+            <marquee behavior="" direction=""> News blog</marquee>
+        </div>
+
+        <form action="" method="get">
+            <input type="text" name="" id="text">
+            <input type="password" name="" id="pwd">
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <script src="third/jquery.js"></script>
+    <script>
+        $ ('#text');
+        console.log(text);
+        const xhr = new XMLHttpRequest();
+       xhr.open('GET','https://saurav.tech/NewsAPI/top-headlines/category/health/in.json');
+       xhr.onreadystatechange = function(){
+        let getInfo = JSON.parse(xhr.responseText); 
+    
+    let newsHead = document.getElementById('head');
+        let newsCode = document.createElement('div');
+        newsCode = `<div>
+                    <marquee> Welcome to the home of news </marquee>`
+                    for (let i = 0; i < getInfo.articles.length; i++){
+                        newsCode += `<h3> ${getInfo.articles[i]}['title']}</h3>
+                <p> ${getInfo.articles[i]['description']}</p>
+                    <footer> ${getInfo.articles[i]['author']} </footer>
+                </div>`
+                    }
+                
+                    let wrapper = document.getElementById("wrapper");
+                    newsHead.innerHTML = newsCode;
+                    wrapper.appendChild(newsHead)
+    
+
+        
+        }
+
+        
+       
+       xhr.send();
+    </script>
+</body>
+</html>
